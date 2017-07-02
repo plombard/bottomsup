@@ -1,0 +1,26 @@
+[
+  {
+    "id": "5ea38d0f-0624-4dc9-bc6c-fb3eab2b0495",
+    "name": "Affligem Tripel",
+    "description": "The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle.",
+    "alcohol": 8.5
+  },
+  {
+    "id": "3abdf459-57c1-4c15-adcd-b3846da5a402",
+    "name": "Rochefort 8",
+    "description": "A dry but rich flavoured beer with complex fruity and spicy flavours.",
+    "alcohol": 8.0
+  },
+  {
+    "id": "088627be-c711-4bf8-a511-a8b3dd464504",
+    "name": "Chimay Rouge",
+    "description": "This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature.",
+    "alcohol": 7.0
+  },
+  {
+    "id": "605bd37f-ae67-414b-862e-79efd2e66229",
+    "name": "Brewdog Punk IPA",
+    "description": "This fresh, full flavour natural beer is our tribute to the classic IPAs of yester-year. The post modern twist is the addition of amazing fruity hops giving an explosion of tropical fruit flavours and a sharp bitter finish.",
+    "alcohol": 5.6
+  }
+]
