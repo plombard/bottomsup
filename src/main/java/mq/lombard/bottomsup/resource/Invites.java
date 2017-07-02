@@ -22,7 +22,7 @@ public class Invites {
   @Produces(APPLICATION_JSON)
   public Response inviteMember(@QueryParam("beer") String beerName, JugMember member) {
     if (Objects.isNull(member.getGlass())) {
-      member.setGlass(BeerHandler.getInstance().pour(beerName));
+      member.setGlass(BeerHandler.INSTANCE.pour(beerName));
     }
     Set<Drinker> drinkers = Table.getInstance().add(member);
     return Response.ok(drinkers).build();
@@ -33,7 +33,7 @@ public class Invites {
   @Produces(APPLICATION_JSON)
   public Response inviteLeader(@QueryParam("beer") String beerName, JugLeader leader) {
     if (Objects.isNull(leader.getGlass())) {
-      leader.setGlass(BeerHandler.getInstance().pour(beerName));
+      leader.setGlass(BeerHandler.INSTANCE.pour(beerName));
     }
     Set<Drinker> drinkers = Table.getInstance().add(leader);
     return Response.ok(drinkers).build();

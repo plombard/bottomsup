@@ -44,7 +44,8 @@ public class Table {
     drinkers
         .stream()
         .filter(drinker -> drinker.getGlass().isToRefill())
-        .forEach(drinker -> drinker.setGlass(BeerHandler.getInstance().pour(beerName)));
+        .forEach(drinker -> drinker.setGlass(BeerHandler.INSTANCE.pour
+            (beerName)));
   }
 
   public Boolean uninvite(String name) {

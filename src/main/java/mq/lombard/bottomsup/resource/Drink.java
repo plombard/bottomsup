@@ -38,6 +38,6 @@ public class Drink {
   @GET
   @Produces(APPLICATION_JSON)
   public Response beers() {
-    return Response.ok(BeerHandler.getInstance().list()).build();
+    return Response.ok(BeerHandler.INSTANCE.list()).build();
   }
 }

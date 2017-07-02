@@ -39,11 +39,12 @@ public class BeerBehaviorTest {
   public void pour() throws Exception {
     assertTrue(
         "The beer poured is no Rochefort 8 in the glass",
-        Objects.equals(BeerHandler.getInstance().pour(beer.getName()), expectedGlass));
+        Objects.equals(BeerHandler.INSTANCE.pour(beer.getName()),
+            expectedGlass));
   }
 
   @Test
   public void list() throws Exception {
-    assertTrue("Wrong number of beers", BeerHandler.getInstance().list().size() == 4);
+    assertTrue("Wrong number of beers", BeerHandler.INSTANCE.list().size() == 4);
   }
 }

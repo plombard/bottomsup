@@ -12,12 +12,12 @@ public class BeerDaoTest {
   public void getBeer() {
     assertTrue(
         "Chimay Rouge not found",
-        Objects.equals(
-            "Chimay " + "Rouge", BeerDao.getInstance().getBeer("Chimay Rouge").getName()));
+        Objects.equals("Chimay " + "Rouge", BeerDao.INSTANCE.getBeer("Chimay " +
+            "Rouge").getName()));
   }
 
   @Test
   public void listBeers() {
-    assertTrue("Beer List not complete", BeerDao.getInstance().listBeers().size() == 4);
+    assertTrue("Beer List not complete", BeerDao.INSTANCE.listBeers().size() == 4);
   }
 }
