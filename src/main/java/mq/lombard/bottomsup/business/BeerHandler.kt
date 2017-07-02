@@ -1,6 +1,6 @@
-package mq.lombard.bottomsup.business;
+package mq.lombard.bottomsup.business
 
-import mq.lombard.bottomsup.Utils
+import mq.lombard.bottomsup.alcoholToStyle
 import mq.lombard.bottomsup.bean.BeerItem
 import mq.lombard.bottomsup.bean.Glass
 import mq.lombard.bottomsup.bean.GlassBuilder
@@ -13,17 +13,17 @@ import java.util.stream.Collectors
 object BeerHandler {
 
   fun pour(beerName: String): Glass {
-    val beer = BeerDao.getBeer(beerName);
+    val beer = BeerDao.getBeer(beerName)
     // Utilisation de builder, de mapper et de parametres optionnels
     return GlassBuilder()
-        .setBeerName(beer.getName())
-        .setBeerStyle(Utils.alcoholToStyle(beer.getAlcohol()))
+        .setBeerName(beer.name)
+        .setBeerStyle(beer.alcohol.alcoholToStyle())
         .setToRefill(false)
-        .build();
+        .build()
   }
 
   fun list(): Set<BeerItem> {
     return BeerDao.listBeers().stream().map(Beer::toBeerItem)
-        .collect(Collectors.toSet());
+        .collect(Collectors.toSet())
   }
 }
