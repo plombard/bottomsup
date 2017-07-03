@@ -19,37 +19,6 @@ dependencies {
     testCompile "junit:junit:4.12"
 }
 
-task swarm() {
-
-    outputs.upToDateWhen { false }
-    def home = project.property("swarm.home")
-    def jarname = project.property("swarm.jarname")
-    def context = project.property("swarm.context")
-
-    copy {
-        from(war.archivePath)
-        into(home)
-        rename war.archiveName, war.baseName + "." + war.extension
-    }
-
-    doLast {
-        javaexec {
-            if (project.hasProperty("swarm.debugport")) {
-                jvmArgs = ["-Xdebug", "-Xnoagent",
-                           "-Xrunjdwp:transport=dt_socket,server=y,suspend=n," +
-                                   "address=" + project.property("swarm" +
-                                   ".debugport")]
-            }
-            main = "-jar"
-            args = [
-                    "$home\\$jarname",
-                    "-Dswarm.context.path=" + context,
-                    "$home\\$war.baseName" + "." + war.extension
-            ]
-        }
-    }
-}
-
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
