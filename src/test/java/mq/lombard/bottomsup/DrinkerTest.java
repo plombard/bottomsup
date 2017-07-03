@@ -1,30 +1,29 @@
 package mq.lombard.bottomsup;
 
-import mq.lombard.bottomsup.actor.JugLeader;
-import mq.lombard.bottomsup.actor.JugMember;
+import mq.lombard.bottomsup.actor.Drinker;
 import mq.lombard.bottomsup.bean.BeerStyle;
 import mq.lombard.bottomsup.bean.Glass;
 import org.junit.Before;
 import org.junit.Test;
 
+import static mq.lombard.bottomsup.actor.DrinkStrategiesKt
+    .getLeaderDrinkStrategy;
 import static org.junit.Assert.assertTrue;
 
 /** @author Pascal Lombard */
 public class DrinkerTest {
 
-  private JugLeader leader;
-  private JugMember member;
+  private Drinker leader;
+  private Drinker member;
 
   @Before
   public void setUp() throws Exception {
-    leader = new JugLeader();
+    leader = new Drinker("Optimus", "FinistJUG");
     leader.setGlass(new Glass("Rochefort 8", BeerStyle.STRONG));
-    leader.setOrganization("FinisJUG");
-    leader.setName("Optimus");
-    member = new JugMember();
+    leader.setDrinkStrategy(getLeaderDrinkStrategy());
+
+    member = new Drinker("Bumblebee", "FinistJUG");
     member.setGlass(new Glass("Chimay Rouge", BeerStyle.MEDIUM));
-    member.setOrganization("FinisJUG");
-    member.setName("Bumblebee");
   }
 
   @Test

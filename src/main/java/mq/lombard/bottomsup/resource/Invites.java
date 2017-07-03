@@ -1,8 +1,7 @@
 package mq.lombard.bottomsup.resource;
 
+import mq.lombard.bottomsup.actor.DrinkStrategiesKt;
 import mq.lombard.bottomsup.actor.Drinker;
-import mq.lombard.bottomsup.actor.JugLeader;
-import mq.lombard.bottomsup.actor.JugMember;
 import mq.lombard.bottomsup.actor.Table;
 import mq.lombard.bottomsup.business.BeerHandler;
 
@@ -20,10 +19,12 @@ public class Invites {
   @Path("/invite")
   @POST
   @Produces(APPLICATION_JSON)
-  public Response inviteMember(@QueryParam("beer") String beerName, JugMember member) {
+  public Response inviteMember(@QueryParam("beer") String beerName, Drinker
+      member) {
     if (Objects.isNull(member.getGlass())) {
       member.setGlass(BeerHandler.INSTANCE.pour(beerName));
     }
+    member.setDrinkStrategy(DrinkStrategiesKt.getMemberDrinkStrategy());
     Set<Drinker> drinkers = Table.getInstance().add(member);
     return Response.ok(drinkers).build();
   }
@@ -31,10 +32,12 @@ public class Invites {
   @Path("/leader")
   @POST
   @Produces(APPLICATION_JSON)
-  public Response inviteLeader(@QueryParam("beer") String beerName, JugLeader leader) {
+  public Response inviteLeader(@QueryParam("beer") String beerName, Drinker
+      leader) {
     if (Objects.isNull(leader.getGlass())) {
       leader.setGlass(BeerHandler.INSTANCE.pour(beerName));
     }
+    leader.setDrinkStrategy(DrinkStrategiesKt.getLeaderDrinkStrategy());
     Set<Drinker> drinkers = Table.getInstance().add(leader);
     return Response.ok(drinkers).build();
   }
