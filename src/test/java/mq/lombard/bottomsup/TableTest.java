@@ -5,7 +5,7 @@ import mq.lombard.bottomsup.actor.JugLeader;
 import mq.lombard.bottomsup.actor.JugMember;
 import mq.lombard.bottomsup.actor.Table;
 import mq.lombard.bottomsup.bean.BeerStyle;
-import mq.lombard.bottomsup.bean.GlassBuilder;
+import mq.lombard.bottomsup.bean.Glass;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,13 +21,11 @@ public class TableTest {
   @Before
   public void setUp() throws Exception {
     leader = new JugLeader();
-    leader.setGlass(
-        new GlassBuilder().setBeerName("Rochefort 8").setBeerStyle(BeerStyle.STRONG).build());
+    leader.setGlass(new Glass("Rochefort 8", BeerStyle.STRONG));
     leader.setOrganization("FinisJUG");
     leader.setName("Optimus");
     member = new JugMember();
-    member.setGlass(
-        new GlassBuilder().setBeerName("Chimay Rouge").setBeerStyle(BeerStyle.MEDIUM).build());
+    member.setGlass(new Glass("Chimay Rouge", BeerStyle.MEDIUM));
     member.setOrganization("FinisJUG");
     member.setName("Bumblebee");
   }
@@ -72,7 +70,7 @@ public class TableTest {
         Table.getInstance()
                 .drinkers()
                 .stream()
-                .filter(drinker -> drinker.getGlass().isToRefill())
+            .filter(drinker -> drinker.getGlass().getToRefill())
                 .count()
             == 2);
   }
@@ -92,7 +90,7 @@ public class TableTest {
         Table.getInstance()
             .drinkers()
             .stream()
-            .noneMatch(drinker -> drinker.getGlass().isToRefill()));
+            .noneMatch(drinker -> drinker.getGlass().getToRefill()));
   }
 
   @Test

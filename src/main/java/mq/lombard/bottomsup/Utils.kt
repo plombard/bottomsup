@@ -6,12 +6,12 @@ import mq.lombard.bottomsup.thirdparty.Beer
 
 /** @author Pascal Lombard
  */
-fun Float.alcoholToStyle(): BeerStyle = when {
+fun Float.alcoholToStyle() = when {
   this < 6 -> BeerStyle.MILD
   this > 7.2 -> BeerStyle.STRONG
   else -> BeerStyle.MEDIUM
 }
 
-fun Beer.toBeerItem(): BeerItem = BeerItem(this.name, this.description, this
+fun Beer.toBeerItem() = BeerItem(this.name, this.description, this
     .alcohol.alcoholToStyle())
 

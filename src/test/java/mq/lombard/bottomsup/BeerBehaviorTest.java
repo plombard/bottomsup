@@ -2,7 +2,6 @@ package mq.lombard.bottomsup;
 
 import mq.lombard.bottomsup.bean.BeerStyle;
 import mq.lombard.bottomsup.bean.Glass;
-import mq.lombard.bottomsup.bean.GlassBuilder;
 import mq.lombard.bottomsup.business.BeerHandler;
 import mq.lombard.bottomsup.thirdparty.Beer;
 import org.junit.Before;
@@ -28,11 +27,7 @@ public class BeerBehaviorTest {
     beer.setAlcohol(8.0F);
 
     expectedGlass =
-        new GlassBuilder()
-            .setBeerName("Rochefort 8")
-            .setBeerStyle(BeerStyle.STRONG)
-            .setToRefill(false)
-            .build();
+        new Glass("Rochefort 8", BeerStyle.STRONG, false);
   }
 
   @Test

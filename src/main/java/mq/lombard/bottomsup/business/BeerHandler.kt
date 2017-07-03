@@ -3,7 +3,6 @@ package mq.lombard.bottomsup.business
 import mq.lombard.bottomsup.alcoholToStyle
 import mq.lombard.bottomsup.bean.BeerItem
 import mq.lombard.bottomsup.bean.Glass
-import mq.lombard.bottomsup.bean.GlassBuilder
 import mq.lombard.bottomsup.dao.BeerDao
 import mq.lombard.bottomsup.thirdparty.Beer
 import mq.lombard.bottomsup.toBeerItem
@@ -15,11 +14,9 @@ object BeerHandler {
   fun pour(beerName: String): Glass {
     val beer = BeerDao.getBeer(beerName)
     // Utilisation de builder, de mapper et de parametres optionnels
-    return GlassBuilder()
-        .setBeerName(beer.name)
-        .setBeerStyle(beer.alcohol.alcoholToStyle())
-        .setToRefill(false)
-        .build()
+    return Glass(beerStyle = beer.alcohol.alcoholToStyle(),
+        beerName = beer.name,
+        toRefill = false)
   }
 
   fun list(): Set<BeerItem> {

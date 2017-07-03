@@ -3,7 +3,7 @@ package mq.lombard.bottomsup;
 import mq.lombard.bottomsup.actor.JugLeader;
 import mq.lombard.bottomsup.actor.JugMember;
 import mq.lombard.bottomsup.bean.BeerStyle;
-import mq.lombard.bottomsup.bean.GlassBuilder;
+import mq.lombard.bottomsup.bean.Glass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,13 +18,11 @@ public class DrinkerTest {
   @Before
   public void setUp() throws Exception {
     leader = new JugLeader();
-    leader.setGlass(
-        new GlassBuilder().setBeerName("Rochefort 8").setBeerStyle(BeerStyle.STRONG).build());
+    leader.setGlass(new Glass("Rochefort 8", BeerStyle.STRONG));
     leader.setOrganization("FinisJUG");
     leader.setName("Optimus");
     member = new JugMember();
-    member.setGlass(
-        new GlassBuilder().setBeerName("Chimay Rouge").setBeerStyle(BeerStyle.MEDIUM).build());
+    member.setGlass(new Glass("Chimay Rouge", BeerStyle.MEDIUM));
     member.setOrganization("FinisJUG");
     member.setName("Bumblebee");
   }
@@ -50,6 +48,7 @@ public class DrinkerTest {
   @Test
   public void fillGlass() throws Exception {
     leader.fillGlass();
-    assertTrue("Leader's glass wsn't filled correctly", !leader.getGlass().isToRefill());
+    assertTrue("Leader's glass wsn't filled correctly", !leader.getGlass()
+        .getToRefill());
   }
 }

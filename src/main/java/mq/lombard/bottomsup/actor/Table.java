@@ -39,13 +39,13 @@ public class Table {
   }
 
   public void oneRound(String name, String beerName) {
-    Long toPay = drinkers.stream().filter(drinker -> drinker.getGlass().isToRefill()).count();
+    Long toPay = drinkers.stream().filter(drinker -> drinker.getGlass()
+        .getToRefill()).count();
     getDrinker(name).ifPresent(drinker1 -> drinker1.pay(toPay.intValue()));
     drinkers
         .stream()
-        .filter(drinker -> drinker.getGlass().isToRefill())
-        .forEach(drinker -> drinker.setGlass(BeerHandler.INSTANCE.pour
-            (beerName)));
+        .filter(drinker -> drinker.getGlass().getToRefill())
+        .forEach(drinker -> drinker.setGlass(BeerHandler.INSTANCE.pour(beerName)));
   }
 
   public Boolean uninvite(String name) {
